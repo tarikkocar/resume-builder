@@ -1,0 +1,10 @@
+.contact-details {
+    display: flex;
+    gap: 1.5em;
+}
+
+.resume-document {
+    padding: 2.5em;
+    margin: 2em 1.5em;
+    box-shadow: 0 0 2em rgba(0, 0, 0, 0.2);
+}
