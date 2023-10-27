@@ -4,7 +4,32 @@
 }
 
 .resume-document {
-    padding: 2.5em;
-    margin: 2em 1.5em;
-    box-shadow: 0 0 2em rgba(0, 0, 0, 0.2);
+    padding: 3em;
+    margin: 0 auto;
+    margin-top: 2em;
+    aspect-ratio: 5 / 7;
+    max-height: 90vh;
+    box-shadow: 0 0 2em rgba(0, 0, 0, 0.3);
+    font-size: 1.5vmin;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+.education-entry, .experience-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.experience-header {
+    margin-bottom: 1em;
+}
+
+ul {
+    padding-left: 2em;
+}
+
+h3 {
+    margin-bottom: 0.5em;
+    border-bottom: solid 0.2em black;
 }
