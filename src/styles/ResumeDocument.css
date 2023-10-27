@@ -1,8 +1,3 @@
-.contact-details {
-    display: flex;
-    gap: 1.5em;
-}
-
 .resume-document {
     padding: 3em;
     margin: 0 auto;
@@ -14,6 +9,12 @@
     display: flex;
     flex-direction: column;
     gap: 2em;
+    background-color: #ffffff;
+}
+
+.contact-details {
+    display: flex;
+    gap: 1.5em;
 }
 
 .education-entry, .experience-header {
@@ -32,4 +33,8 @@ ul {
 h3 {
     margin-bottom: 0.5em;
     border-bottom: solid 0.2em black;
+}
+
+.contact-details, .experience-details {
+    font-size: 90%;
 }
