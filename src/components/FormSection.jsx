@@ -4,7 +4,8 @@ import Experience from "./Experience";
 import Skills from "./Skills";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
-import React, { useState } from "react";
+import html2pdf from "html2pdf.js";
+import { useState } from "react";
 
 export default function FormSection({
   userData,
@@ -37,6 +38,16 @@ export default function FormSection({
     setNumExperiences(numExperiences - 1);
 
     if (numExperiences === 2) setShowRemoveExpButton(false);
+  };
+
+  const generatePDF = () => {
+    const resume = document.querySelector(".resume-document");
+    const opt = {
+      margin: [10, 20],
+      image: { type: "jpeg", quality: 0.98 },
+      pagebreak: { mode: "avoid-all" },
+    };
+    html2pdf().set(opt).from(resume).save("resume.pdf");
   };
 
   return (
@@ -125,6 +136,21 @@ export default function FormSection({
       </Stack>
 
       <Skills userData={userData} setUserData={setUserData}></Skills>
+
+      <Button
+        variant="contained"
+        sx={{
+          color: "#ffffff",
+          backgroundColor: "#12a1a1",
+          padding: "0.5em 3.5em",
+          maxWidth: "fit-content",
+          alignSelf: "center",
+          "&:hover": { backgroundColor: "#209999" },
+        }}
+        onClick={generatePDF}
+      >
+        Download Resume
+      </Button>
     </div>
   );
 }
