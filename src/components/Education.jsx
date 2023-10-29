@@ -3,43 +3,48 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import placeholderPerson from "../constants/placeholderPerson";
 
-export default function Education({ userData, setUserData }) {
+export default function Education({ userData, setUserData, index }) {
   const handleChange = (e) => {
     const { id, value } = e.target;
     const newInfo = { ...userData, [id]: value };
     setUserData(newInfo);
 
-    if (!value) setUserData(placeholderPerson);
+    if (!value) {
+      setUserData((prevData) => ({
+        ...prevData,
+        [id]: placeholderPerson[id],
+      }));
+    }
   };
 
   return (
     <Box component="form">
       <Typography variant="h5" component="h2">
-        Education
+        Education {index === 0 ? "" : index + 1}
       </Typography>
       <TextField
         fullWidth
-        id="university"
-        label="University"
+        id={`institution${index === 0 ? "" : index + 1}`}
+        label="Institution"
         variant="outlined"
         size="small"
         margin="normal"
-        placeholder={userData.university}
+        placeholder={userData.institution}
         onChange={handleChange}
       />
       <TextField
         fullWidth
-        id="department"
-        label="Department"
+        id={`program${index === 0 ? "" : index + 1}`}
+        label="Program"
         variant="outlined"
         size="small"
         margin="normal"
-        placeholder={userData.department}
+        placeholder={userData.program}
         onChange={handleChange}
       />
       <TextField
         fullWidth
-        id="educationDuration"
+        id={`educationDuration${index === 0 ? "" : index + 1}`}
         label="Duration"
         variant="outlined"
         size="small"
@@ -49,7 +54,7 @@ export default function Education({ userData, setUserData }) {
       />
       <TextField
         fullWidth
-        id="educationLocation"
+        id={`educationLocation${index === 0 ? "" : index + 1}`}
         label="Location"
         variant="outlined"
         size="small"

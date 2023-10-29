@@ -22,8 +22,16 @@
     justify-content: space-between;
 }
 
+.education-entry:not(:first-of-type), .experience-entry:not(:first-of-type) {
+    margin-top: 1.8em;
+}
+
 .experience-header {
     margin-bottom: 1em;
+}
+
+.education-right, .experience-right {
+    text-align: end;
 }
 
 ul {

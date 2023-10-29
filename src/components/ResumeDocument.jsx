@@ -1,6 +1,12 @@
+import EducationSection from "./EducationSection";
+import ExperienceSection from "./ExperienceSection";
 import "../styles/ResumeDocument.css";
 
-export default function ResumeDocument({ userData }) {
+export default function ResumeDocument({
+  userData,
+  numEducations,
+  numExperiences,
+}) {
   return (
     <div className="resume-document">
       <div className="header">
@@ -13,49 +19,15 @@ export default function ResumeDocument({ userData }) {
       </div>
       <div className="section">
         <h3>Education</h3>
-        <div className="education-entry">
-          <div className="education-left">
-            <div className="university">
-              <b>{userData.university}</b>
-            </div>
-            <div className="program">{userData.department}</div>
-          </div>
-          <div className="education-right">
-            <div className="education-dur">{userData.educationDuration}</div>
-            <div className="education-loc">{userData.educationLocation}</div>
-          </div>
-        </div>
+        {[...Array(numEducations)].map((_, index) => (
+          <EducationSection key={index} index={index} userData={userData} />
+        ))}
       </div>
       <div className="section">
         <h3>Experience</h3>
-        <div className="experience-entry">
-          <div className="experience-header">
-            <div className="experience-left">
-              <div className="company">
-                <b>{userData.company}</b>
-              </div>
-              <div className="title">{userData.title}</div>
-            </div>
-            <div className="experience-right">
-              <div className="experience-dur">
-                {userData.experienceDuration}
-              </div>
-              <div className="experience-loc">
-                {userData.experienceLocation}
-              </div>
-            </div>
-          </div>
-          <div className="experience-details">
-            <ul>
-              {userData.details
-                .split("\n")
-                .filter((sentence) => sentence.trim() !== "")
-                .map((sentence, index) => (
-                  <li key={index}>{sentence}</li>
-                ))}
-            </ul>
-          </div>
-        </div>
+        {[...Array(numExperiences)].map((_, index) => (
+          <ExperienceSection key={index} index={index} userData={userData} />
+        ))}
       </div>
       <div className="section">
         <h3>Skills</h3>
